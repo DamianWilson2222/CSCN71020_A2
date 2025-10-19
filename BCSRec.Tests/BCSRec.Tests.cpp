@@ -2,7 +2,10 @@
 #include "CppUnitTest.h"
 
 
-extern "C" int getPerimeter(int *length, int *width);
+extern "C" {
+	int getPerimeter(int* length, int* width);
+	int getArea(int* length, int* width);
+}
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -20,6 +23,15 @@ namespace BCSRecTests
 			result = getPerimeter(&length,&width);
 			Assert::AreEqual(26, result);
 
+		}
+
+		TEST_METHOD(AreaFunctionality_Length80Width33_Returns2640)
+		{
+			int result = 0;
+			int length = 80;
+			int width = 33;
+			result = getArea(&length, &width);
+			Assert::AreEqual(2640, result);
 		}
 	};
 }
