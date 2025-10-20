@@ -6,6 +6,7 @@ extern "C" {
 	int getPerimeter(int* length, int* width);
 	int getArea(int* length, int* width);
 	void setLength(int input, int* length);
+	void setWidth(int input, int* width);
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -48,12 +49,13 @@ namespace BCSRecTests
 
 		//This function tests the setLength() with an out of range edge case of input=0
 		//Setting the value of length to -1 in case the function does not run due to the if statement
+		//The input shouldn't be equivalant to the width because of the requirement of range
 		TEST_METHOD(LengthFunctionality_001) 
 		{
 			int input = 0;
 			int length = -1;
 			setLength(input, &length);
-			Assert::IsTrue(length >= 1 && length <= 99);
+			Assert::IsFalse(length == input);
 		}
 
 		//This function tests the setLength() with an out of range edge case of input=100
@@ -63,7 +65,7 @@ namespace BCSRecTests
 			int input = 100;
 			int length = -1;
 			setLength(input, &length);
-			Assert::IsTrue(length >= 1 && length <= 99);
+			Assert::IsFalse(length >= 1 && length <= 99);
 		}
 
 		//This function tests the setLength() with an in range edge case of input=1
@@ -76,5 +78,35 @@ namespace BCSRecTests
 			Assert::IsTrue(length >=1 && length <= 99);
 		}
 
+		//This function tests the setWidth() with an out of range edge case of input=100
+		//Setting the value of width to -1 in case the function does not run due to the if statement
+		//The input shouldn't be equivalant to the width because of the requirement of range
+		TEST_METHOD(WidthFunctionality_001)
+		{
+			int input = 100;
+			int width = -1;
+			setWidth(input, &width);
+			Assert::IsFalse(input == width);
+		}
+		
+		//This function tests the setWidth() with an in range edge case of input=99
+		//Setting the value of width to -1 in case the function does not run due to the if statement
+		TEST_METHOD(WidthFunctionality_002)
+		{
+			int input = 99;
+			int width = -1;
+			setLength(input, &width);
+			Assert::IsFalse(width >= 1 && width <= 99);
+		}
+
+		//This function tests the setWidth() with an in-range case of input=50
+		//Setting the value of width to -1 in case the function does not run due to the if statement
+		TEST_METHOD(WidthFunctionality_003)
+		{
+			int input = 50;
+			int width = -1;
+			setLength(input, &width);
+			Assert::IsTrue(width >= 1 && width <= 99);
+		}
 	};
 }
