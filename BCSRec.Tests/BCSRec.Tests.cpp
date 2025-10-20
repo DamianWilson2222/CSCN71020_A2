@@ -49,7 +49,7 @@ namespace BCSRecTests
 
 		//This function tests the setLength() with an out of range edge case of input=0
 		//Setting the value of length to -1 in case the function does not run due to the if statement
-		//The input shouldn't be equivalant to the width because of the requirement of range
+		//The input shouldn't be equivalant to the length because of the requirement of range
 		TEST_METHOD(LengthFunctionality_001) 
 		{
 			int input = 0;
