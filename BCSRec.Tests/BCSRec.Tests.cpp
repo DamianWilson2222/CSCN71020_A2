@@ -96,7 +96,7 @@ namespace BCSRecTests
 			int input = 99;
 			int width = -1;
 			setLength(input, &width);
-			Assert::IsFalse(width >= 1 && width <= 99);
+			Assert::IsTrue(width >= 1 && width <= 99);
 		}
 
 		//This function tests the setWidth() with an in-range case of input=50
