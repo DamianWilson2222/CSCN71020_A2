@@ -5,6 +5,7 @@
 extern "C" {
 	int getPerimeter(int* length, int* width);
 	int getArea(int* length, int* width);
+	void setLength(int input, int* length);
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -38,5 +39,42 @@ namespace BCSRecTests
 			result = getArea(&length, &width);
 			Assert::AreEqual(2640, result);
 		}
+	};
+
+	//Testing for range requirement
+	TEST_CLASS(Task2_RectangleDimensions)
+	{
+	public:
+
+		//This function tests the setLength() with an out of range edge case of input=0
+		//Setting the value of length to -1 in case the function does not run due to the if statement
+		TEST_METHOD(LengthFunctionality_001) 
+		{
+			int input = 0;
+			int length = -1;
+			setLength(input, &length);
+			Assert::IsTrue(length >= 1 && length <= 99);
+		}
+
+		//This function tests the setLength() with an out of range edge case of input=100
+		//Setting the value of length to -1 in case the function does not run due to the if statement
+		TEST_METHOD(LengthFunctionality_002)
+		{
+			int input = 100;
+			int length = -1;
+			setLength(input, &length);
+			Assert::IsTrue(length >= 1 && length <= 99);
+		}
+
+		//This function tests the setLength() with an in range edge case of input=1
+		//Setting the value of length to -1 in case the function does not run due to the if statement
+		TEST_METHOD(LengthFunctionality_003)
+		{
+			int input = 1;
+			int length = -1;
+			setLength(input, &length);
+			Assert::IsTrue(length >=1 && length <= 99);
+		}
+
 	};
 }
